@@ -1,0 +1,55 @@
+<section id="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-wrap">
+                    <h1>Add a Movie</h1>
+                    <form #f="ngForm" novalidate autocomplete="off" (ngSubmit)="addMovie(f.value)">
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="moviesModel.Name" name="Name" class="form-control" placeholder="Name" required
+                                #refname='ngModel' pattern="^[a-zA-Z]*$" maxlength="15" minlength="2">
+                            <div *ngIf="refname.errors && (refname.dirty || refname.touched)" class="alert alert-danger">
+                                <div [hidden]="!refname.errors.required">
+                                    Name is required.
+                                </div>
+                                <div [hidden]="!refname.errors.minlength">
+                                    Please enter atleast 2 characters.
+                                </div>
+                                <div [hidden]="!refname.errors.pattern">
+                                    Please enter alphabets.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="moviesModel.Description" name="Description" id="Description" class="form-control" placeholder="Description" required
+                               #refdescription='ngModel'>
+                        </div>
+                        <div class="form-group">
+                            <input type="Rdate" [(ngModel)]="moviesModel.Rdate" name="Rdate"  class="form-control" placeholder="Year of Release" required
+                                #refrdate>
+                        </div>
+                        <div class="form-group">
+                            <input type="Rating" [(ngModel)]="moviesModel.Rating" name="Rating"  class="form-control" placeholder="Rating" required
+                                #refrating>
+                        </div>
+                        
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Add" [disabled]="f.invalid">
+                        
+                    </form>
+                    <hr>
+                </div>
+            </div>
+            <!-- /.col-xs-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+  </section>
+  <hr/>
+  <div *ngIf="moviesArray.length > 0">
+    <app-movie-list [movieDetail]="moviesArray"></app-movie-list>
+  </div>
+  
+  
+  
+

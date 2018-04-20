@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <section class="content">
+            <div class="col-md-8 col-md-offset-2">
+                <h1 style="text-align: center;">List of Movies</h1>
+                <hr/>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="pull-right">
+                        </div>
+                        <div *ngIf="movieDetail.length <= 0" [ngStyle]="{'text-align': 'center','color': 'red'}">
+                        No Movie Available
+                        </div>
+                        <div class="table-resposive">
+                            <table class="table table-filter">
+                                <tbody>
+                                    <tr *ngFor="let moviesList of movieDetail;let i = index">
+                                        <td>
+                                            {{i + 1}}
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <div class="media">
+                                                <a href="#" class="pull-left">
+                                                    <img [src]="imageUrl" class="media-photo">
+                                                </a>
+                                                <h4 class="title">
+                                                    {{moviesList?.Name}} 
+                                                    {{moviesList?.Description}}
+                                                    {{moviesList?.Rdate}}
+                                                </h4>
+                                                               <div class="rating">
+                                                                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                                                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                                                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                                                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                                                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                                                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                                                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                                                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                                                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                                                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                                                </div>
+                                                <div class="media-body">
+                                                    <p class="summary" appMyHighlighter>{{moviesList?.rating}}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
